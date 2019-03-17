@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		F7B8610F223E62CD0083FFBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B8610E223E62CD0083FFBC /* AppDelegate.swift */; };
-		F7B86111223E62CD0083FFBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B86110223E62CD0083FFBC /* ViewController.swift */; };
+		F7B86111223E62CD0083FFBC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B86110223E62CD0083FFBC /* MainViewController.swift */; };
 		F7B86114223E62CD0083FFBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7B86112223E62CD0083FFBC /* Main.storyboard */; };
 		F7B86116223E62CE0083FFBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7B86115223E62CE0083FFBC /* Assets.xcassets */; };
 		F7B86119223E62CE0083FFBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7B86117223E62CE0083FFBC /* LaunchScreen.storyboard */; };
+		F7B8612A223E67E10083FFBC /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B86129223E67E10083FFBC /* ClockView.swift */; };
+		F7B86135223ECB010083FFBC /* Orbitron-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7B86134223ECB010083FFBC /* Orbitron-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F7B8610B223E62CD0083FFBC /* VectornatorClocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VectornatorClocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B8610E223E62CD0083FFBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F7B86110223E62CD0083FFBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F7B86110223E62CD0083FFBC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F7B86113223E62CD0083FFBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7B86115223E62CE0083FFBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7B86118223E62CE0083FFBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7B8611A223E62CE0083FFBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7B86129223E67E10083FFBC /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		F7B86134223ECB010083FFBC /* Orbitron-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				F7B86121223E63190083FFBC /* Screens */,
+				F7B86123223E65F30083FFBC /* Resources */,
 				F7B86120223E62EF0083FFBC /* AppResources */,
 			);
 			path = VectornatorClocks;
@@ -64,8 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				F7B8610E223E62CD0083FFBC /* AppDelegate.swift */,
-				F7B86112223E62CD0083FFBC /* Main.storyboard */,
-				F7B86115223E62CE0083FFBC /* Assets.xcassets */,
 				F7B86117223E62CE0083FFBC /* LaunchScreen.storyboard */,
 				F7B8611A223E62CE0083FFBC /* Info.plist */,
 			);
@@ -75,17 +78,44 @@
 		F7B86121223E63190083FFBC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				F7B86122223E63260083FFBC /* Main */,
+				F7B86110223E62CD0083FFBC /* MainViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		F7B86122223E63260083FFBC /* Main */ = {
+		F7B86123223E65F30083FFBC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F7B86110223E62CD0083FFBC /* ViewController.swift */,
+				F7B86133223ECABE0083FFBC /* Fonts */,
+				F7B86125223E66220083FFBC /* CustomViews */,
+				F7B86124223E660C0083FFBC /* Storyboards */,
 			);
-			path = Main;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F7B86124223E660C0083FFBC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F7B86112223E62CD0083FFBC /* Main.storyboard */,
+				F7B86115223E62CE0083FFBC /* Assets.xcassets */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F7B86125223E66220083FFBC /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				F7B86129223E67E10083FFBC /* ClockView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		F7B86133223ECABE0083FFBC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F7B86134223ECB010083FFBC /* Orbitron-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +178,7 @@
 			files = (
 				F7B86119223E62CE0083FFBC /* LaunchScreen.storyboard in Resources */,
 				F7B86116223E62CE0083FFBC /* Assets.xcassets in Resources */,
+				F7B86135223ECB010083FFBC /* Orbitron-Bold.ttf in Resources */,
 				F7B86114223E62CD0083FFBC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,7 +190,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7B86111223E62CD0083FFBC /* ViewController.swift in Sources */,
+				F7B8612A223E67E10083FFBC /* ClockView.swift in Sources */,
+				F7B86111223E62CD0083FFBC /* MainViewController.swift in Sources */,
 				F7B8610F223E62CD0083FFBC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
