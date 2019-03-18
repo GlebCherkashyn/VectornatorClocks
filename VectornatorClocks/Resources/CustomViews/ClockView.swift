@@ -34,15 +34,10 @@ class ClockView: UIView {
         return UIBezierPath(ovalIn: bounds).cgPath
     }
     
-    // MARK: - Life cycle -
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setup()
-    }
-    
     // MARK: - Clock configuration -
     override func layoutSubviews() {
         super.layoutSubviews()
+        setup()
         
         /*
          All drawings are performed in layoutSubviews to avoid issues with view's size
@@ -194,7 +189,7 @@ class ClockView: UIView {
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
         animation.repeatCount = .greatestFiniteMagnitude
         animation.fromValue = fromValue
-        animation.duration = duration * speedRatio
+        animation.duration = duration / speedRatio
         animation.toValue = CGFloat.pi * 2 + fromValue
         return animation
     }
