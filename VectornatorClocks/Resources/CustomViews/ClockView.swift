@@ -15,12 +15,13 @@ class ClockView: UIView {
     private var secondsPointer = CAShapeLayer()
     private var minutesPointer = CAShapeLayer()
     private var hoursPointer = CAShapeLayer()
+    private var shadowLayer = CALayer()
     private var numbersLayer = CALayer()
+    private var bgImageView = UIImageView()
     
     private var hours: CGFloat = 0
     private var minutes: CGFloat = 0
     private var seconds: CGFloat = 0
-    
     
     private var centerPoint: CGPoint {
         return CGPoint(x: bounds.midX, y: bounds.midY)
@@ -34,10 +35,15 @@ class ClockView: UIView {
         return UIBezierPath(ovalIn: bounds).cgPath
     }
     
+    // MARK: - Life cycle -
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setup()
+    }
+    
     // MARK: - Clock configuration -
     override func layoutSubviews() {
         super.layoutSubviews()
-        setup()
         
         /*
          All drawings are performed in layoutSubviews to avoid issues with view's size
@@ -46,6 +52,24 @@ class ClockView: UIView {
         seconds = CGFloat(components.second!)
         minutes = CGFloat(components.minute!)
         hours = CGFloat(components.hour! % 12)
+        
+        // Configuring shadow
+        shadowLayer.shadowPath = dialPath
+        shadowLayer.shadowOpacity = 1
+        shadowLayer.shadowRadius = 10
+        shadowLayer.shadowOffset = .zero
+        shadowLayer.shadowColor = UIColor.black.cgColor
+        
+        // Configuring background
+        bgImageView.frame = bounds
+        let imageMask = CAShapeLayer()
+        imageMask.path = dialPath
+        bgImageView.layer.mask = imageMask
+        bgImageView.subviews.forEach { $0.removeFromSuperview() }
+        let darkBlur = UIBlurEffect(style: .dark)
+        let blurView = UIVisualEffectView(effect: darkBlur)
+        blurView.frame = bgImageView.bounds
+        bgImageView.addSubview(blurView)
         
         // Configuring dial
         dial.path = dialPath
@@ -104,29 +128,14 @@ class ClockView: UIView {
     private func setup() {
         
         // Adding shadow to the bottom of clock
-        let shadowLayer = CALayer()
-        shadowLayer.shadowPath = dialPath
-        shadowLayer.shadowOpacity = 1
-        shadowLayer.shadowRadius = 10
-        shadowLayer.shadowOffset = .zero
-        shadowLayer.shadowColor = UIColor.black.cgColor
         layer.addSublayer(shadowLayer)
         
         // Adding background image with blur effect
-        let imageView = UIImageView(frame: bounds)
-        imageView.image = UIImage(named: "fi-0")
-        imageView.contentMode = .scaleAspectFill
-        let darkBlur = UIBlurEffect(style: .dark)
-        let blurView = UIVisualEffectView(effect: darkBlur)
-        blurView.frame = imageView.bounds
-        imageView.addSubview(blurView)
+        bgImageView.image = UIImage(named: "fi-0")
+        bgImageView.contentMode = .scaleAspectFill
+        bgImageView.layer.masksToBounds = true
         
-        imageView.layer.masksToBounds = true
-        let imageMask = CAShapeLayer()
-        imageMask.path = dialPath
-        imageView.layer.mask = imageMask
-        
-        addSubview(imageView)
+        addSubview(bgImageView)
         
         // Composing main elements
         layer.addSublayer(dial)
